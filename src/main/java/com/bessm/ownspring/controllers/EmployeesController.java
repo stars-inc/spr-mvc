@@ -1,8 +1,5 @@
 package com.bessm.ownspring.controllers;
 
-import java.util.List;
-// import java.util.ArrayList;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,34 +8,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bessm.ownspring.interfaces.EmployeeRepository;
 import com.bessm.ownspring.models.Employees;
+import com.bessm.ownspring.services.LoadDataEmployees;
+
+import jakarta.annotation.PostConstruct;
 
 @RestController
-@RequestMapping("/emp")
 public class EmployeesController {
   
-  // private List<Employees> employees = new ArrayList<>();
   private EmployeeRepository repository;
+  private LoadDataEmployees loadDataEmployees;
 
-  public EmployeesController(EmployeeRepository repository) {
+  public EmployeesController(EmployeeRepository repository, LoadDataEmployees loadDataEmployees) {
     this.repository = repository;
-    repository.saveAll(
-      List.of(
-        new Employees(
-          "Alex", "bessm", "+7(909)062-12-13", "alexandr.bessm@gmail.com", true, 0),
-        new Employees(
-          "Anna", "Vasil", "+7(903)700-00-20", "ann.vas@mail.ru", false, 0),
-        new Employees(
-          "Nikita", "bessm", "+7(965)343-34-34", "nikit@gmail.com", true, 0)
-      )
-    );
+    this.loadDataEmployees = loadDataEmployees;
   }
 
-  @GetMapping
+  @PostConstruct
+  public void initEmployees() {
+    loadDataEmployees.loadEmployees();
+  }
+
+  @GetMapping("/employees")
   public Iterable<Employees> getEmployees() {
     return repository.findAll();
   }
