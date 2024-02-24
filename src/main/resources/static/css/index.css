@@ -31,7 +31,7 @@ ul { list-style: none; }
 
 .f-gap {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.4rem;
 }
 
 body {
@@ -52,6 +52,7 @@ body {
 
 .container {
   width: 100%;
+  margin: 0 auto;
   padding: 0 1.5rem;
 }
 
@@ -101,8 +102,9 @@ body {
   content: "";
   width: 2.3rem;
   height: 2.3rem;
-  top: -50%;
-  left: -50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: transparent;
   border-radius: 50%;
   transition: .3s;
@@ -131,6 +133,8 @@ body {
     background-image: url("../img/bg3.jpg");
     background-position-y: center;
   }
+
+  .container { max-width: 800px; }
 }
 
 @media screen and (min-width: 980px) {
@@ -138,6 +142,8 @@ body {
     background-image: url("../img/bg1.jpg");
     background-position-y: center;
   }
+
+  .container { max-width: 1280px; }
 }
 
 .main-header { 
