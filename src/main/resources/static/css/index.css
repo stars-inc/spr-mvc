@@ -129,6 +129,7 @@ body {
 
 .main-wrapper {
   width: 100%;
+  min-height: 16.8rem;
   padding-bottom: 1.5rem;
   background-image: url("../img/bg4-min.jpg");
   background-size: cover;
@@ -230,6 +231,19 @@ body {
   .card-main { flex: 1 0 100%; }
   .card-second { flex: 0 0 49%; }
   .card-third { flex: 0 0 49%; }
+}
+
+@media screen and (min-width: 980px) {
+  .cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: .5rem;
+  }
+
+  .card-main { grid-area: 1 / 1 / 3 / 4; }
+  .card-second { grid-area: 1 / 4 / 2 / 6; }
+  .card-third { grid-area: 2 / 4 / 3 / 6; }
 }
 
 .dice {
