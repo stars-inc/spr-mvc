@@ -10,6 +10,7 @@
   --main-fn-family: "Montserrat"; 
   --main-fn-size: 1rem;
   --main-bg-color: #27282c;
+  --main-art-color: #6b57ff;
   --main-tx-color: #fff;
   --main-ln-color: #a6a6a8;
   --second-color: #bfbfb2;
@@ -126,6 +127,8 @@ body {
   padding-top: 2.5rem;
   flex: 3; 
 }
+
+.main-section { margin-bottom: 1.5rem; }
 
 .main-wrapper {
   width: 100%;
@@ -307,5 +310,85 @@ body {
   background-color: var(--main-tx-color);
   cursor: pointer;
 }
+
+.main-articles {
+  padding: 2.5rem 0 1.5rem;
+  background-color: var(--main-art-color);
+}
+
+.articles-container { margin-top: 1.5rem; }
+
+.articles-title { font-size: 3rem; }
+
+.article {
+  display: flex;
+  width: 100%;
+  margin-bottom: .5rem;
+  padding: 1rem;
+  flex-direction: column;
+  gap: .5rem;
+  background-color: var(--main-tx-color);
+  border-radius: 1.5rem;
+  color: var(--main-ln-color);
+}
+
+@media(min-width: 759px) and (max-width: 979px) {
+  .articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+
+  .article { 
+    height: 100%;
+    min-height: 18.7rem;
+    flex: 1 0 48%; 
+  }
+
+  .article-footer { margin-top: auto; }
+}
+
+@media(min-width: 980px) and (max-width: 1090px) {
+  .articles-container {
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+
+  .article { 
+    height: 100%;
+    min-height: 26.8rem;
+    flex: 1 0 24%; 
+  }
+
+  .article-footer { margin-top: auto; }
+}
+
+@media screen and (min-width: 1090px) {
+  .articles-container {
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+
+  .article { 
+    height: 100%;
+    min-height: 23.8rem;
+    flex: 1 0 24%; 
+  }
+
+  .article-body { align-self: center; }
+
+  .article-footer { margin-top: auto; }
+}
+
+.article-header {
+  color: var(--main-bg-color);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.article:last-child { margin-bottom: 0; }
 
 .footer { flex: 1; }
